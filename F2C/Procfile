@@ -1,0 +1,1 @@
+web: gunicorn F2C.wsgi
