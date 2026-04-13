@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+body{
+    background: linear-gradient(to right, #654ea3, #eaafc8);
+}
+
+/* Login Box */
+.login-box{
+    width: 350px;
+    margin: 120px auto;
+    padding: 30px;
+    background: rgb(242, 237, 237);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: 0.4s;
+}
+
+.login-box:hover{
+    transform: rotateY(10deg) scale(1.02);
+}
+
+/* Inputs */
+input{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: 15px;
+}
+
+/* Button */
+button{
+    width: 100%;
+    padding: 12px;
+    background: #ec407a;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background: rgb(67, 172, 242);
+    transform: scale(1.05);
+}
+
+/* Messages */
+ul.messages{
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+ul.messages li{
+    color: red;
+    font-weight: bold;
+}
+
+</style>
+
+<div class="login-box">
+
+🥕 🍅 🥬
+
+<h2 style="color: #7e57c2;">Login</h2>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="username" placeholder="Username" required>
+
+    <input type="password" name="password" placeholder="Password" required>
+
+    <button type="submit">Login</button>
+
+</form>
+```
+
+</div>
+
+{% endblock %}

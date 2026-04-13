@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    color: rgb(8, 8, 8);
+}
+
+.hero h1 {
+    font-size: 50px;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+.btn {
+    padding: 12px 25px;
+    background:  #ec407a;
+    color: black;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+.btn:hover {
+    background: #ec407a;;
+    transform: scale(1.1);
+}
+
+/* 3D Product Cards */
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 50px;
+}
+
+.card {
+    width: 250px;
+    height: 300px;
+    background: rgb(250, 248, 250);
+    border-radius: 20px;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    transform: rotateY(15deg) rotateX(10deg);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    height: 200px;
+}
+
+.card h3 {
+    text-align: center;
+}
+
+
+.section{
+    padding: 80px;
+    text-align: center;
+}
+
+.about{
+    background:#7b1fa2; 
+}
+
+.mission{
+    background: #ec407a;
+}
+
+.contact{
+    background:#64b5f6;
+}
+
+
+</style>
+
+
+
+
+
+<div class="hero">
+    <h1>Welcome to HarvestBridge 🌽</h1>
+    <p>Connecting Fields to Families</p>
+    <a href="{% url 'register' %}" class="btn">Get Started</a>
+</div>
+
+
+
+<div class="products">
+    <div class="card">
+        <img src="{% static 'images/veg.jpg' %}" width="250">
+        <h3>Fresh Vegetables</h3>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/fruit.jpg' %}" width="250">
+        <h3>Organic Fruits</h3>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/rice.jpg' %}" width="250">
+        <h3>Grains & Rice</h3>
+    </div>
+</div>
+
+
+<div class="section">
+    <h1>Welcome to Farmer to Consumer</h1>
+    <p>Fresh products directly from farmers</p>
+</div>
+
+<div class="info-container">
+
+  <div class="info-box">
+    <h3>🌱 About Our Company</h3>
+    <p>
+      Our platform connects farmers directly with customers. 
+      This helps farmers earn better income and customers get fresh organic products.
+    </p>
+  </div>
+
+  <div class="info-box">
+    <h3>🤝 Our Mission</h3>
+    <p>
+      We want to remove middlemen and build a strong farmer-to-customer supply chain.
+    </p>
+  </div>
+
+  <div class="info-box">
+    <h3>☎️ Contact Us</h3>
+    <p>
+      Email: support@farmer2consumer.com
+    </p>
+  </div>
+
+</div>
+{% endblock %}

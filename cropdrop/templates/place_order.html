@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 style="text-align:center; color:#e92c68;">Place Order</h2>
+
+<div class="order-box">
+
+    <h3 style="text-align:center;">
+        {{ product.name }}
+    </h3>
+
+    <p>
+        <b>Price:</b> ₹{{ product.price }}
+    </p>
+
+    <p>
+        <b>Available Quantity:</b>
+        {{ product.quantity }} {{ product.unit }}
+    </p>
+
+    {% if error %}
+        <p style="color:red; text-align:center;">
+            {{ error }}
+        </p>
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label><b>Quantity</b></label>
+
+        <input
+            type="number"
+            name="quantity"
+            value="1"
+            min="1"
+            max="{{ product.quantity }}"
+            style="
+                width:100%;
+                padding:10px;
+                margin:10px 0;
+                border-radius:10px;
+                border:1px solid #ccc;
+            "
+        >
+
+        <label><b>Unit</b></label>
+
+        <select
+            name="unit"
+            style="
+                width:100%;
+                padding:10px;
+                margin-bottom:15px;
+                border-radius:10px;
+            "
+        >
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+        </select>
+
+       <button type="submit">
+            Place Order
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

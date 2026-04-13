@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+.form-box{
+    width: 350px;
+    margin: 80px auto;
+    padding: 30px;
+    background: rgb(249, 246, 246);
+    border-radius: 20px;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+    transform-style: preserve-3d;
+    transition: 0.5s;
+}
+
+.form-box:hover{
+    transform: rotateY(10deg);
+}
+
+input, select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid rgb(40, 39, 39);
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background:  #ec407a;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background: rgb(67, 172, 242);
+    transform: scale(1.05);
+}
+
+ul.messages {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+ul.messages li {
+    color: red;
+    font-weight: bold;
+}
+</style>
+
+<div class="form-box">
+   <h2 style="text-align: center; color: #7e57c2;">Register</h2>
+
+    <!-- ✅ Add messages ABOVE the form -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="phone" placeholder="Phone" required>
+
+        <select name="role">
+            <option value="farmer">Farmer</option>
+            <option value="customer">Customer</option>
+        </select>
+
+        <input type="text" name="extra" 
+        placeholder="Location (Farmer) / Address (Customer)" required>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+{% endblock %}
